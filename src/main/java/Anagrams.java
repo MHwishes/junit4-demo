@@ -4,12 +4,29 @@ import java.util.List;
 
 public class Anagrams {
 
-    public static List<String> anagrams(String string) {
+    static List<String> anagrams(String string) {
 
-        if (string.length() == 0) {
-
-            return new ArrayList();
+        if (string.length() <= 1) {
+            return Arrays.asList(string);
         }
-        return Arrays.asList(string);
+        ArrayList anagrams = new ArrayList();
+        for (int i = 0; i < string.length(); i++) {
+            for (int j = 0; j < string.length() - 1; j++) {
+                anagrams.add(string.charAt(i) + Anagrams.anagrams(Anagrams.removeIndexFromString(string, i)).get(j));
+            }
+        }
+        return anagrams;
+    }
+
+
+    private static String removeIndexFromString(String str, Integer index) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
+            if (i == index) {
+                continue;
+            }
+            result.append(str.charAt(i));
+        }
+        return result.toString();
     }
 }
