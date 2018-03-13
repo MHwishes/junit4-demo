@@ -1,6 +1,7 @@
 import org.junit.Test;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -13,4 +14,10 @@ public class AnagramsTest {
         assertEquals(0, Anagrams.anagrams("").size());
     }
 
+    @Test
+    public void should_return_when_give_a() throws Exception {
+
+        List<String> expected = Arrays.asList("a");
+       assertEquals(expected,Anagrams.anagrams("a"));
+    }
 }
