@@ -10,8 +10,12 @@ public class Anagrams {
             return Arrays.asList(string);
         }
         ArrayList anagrams = new ArrayList();
+
         for (int i = 0; i < string.length(); i++) {
-            for (int j = 0; j < string.length() - 1; j++) {
+            List anagramsOfRest = Anagrams.anagrams(Anagrams.removeIndexFromString(string, i));
+            //坑点在这里
+//            for (int j = 0; j < string.length() - 1; j++) {
+            for (int j = 0; j < anagramsOfRest.size(); j++) {
                 anagrams.add(string.charAt(i) + Anagrams.anagrams(Anagrams.removeIndexFromString(string, i)).get(j));
             }
         }
